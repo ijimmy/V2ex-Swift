@@ -61,7 +61,7 @@ class V2Client: NSObject {
     
 
     private var _once:String?
-    //全局once字符串，用于用户各种操作，例如回帖 登陆 。这些操作都需要用的once ，而且这个once是全局统一的
+    //全局once字符串，用于用户各种操作，例如回帖 登录 。这些操作都需要用的once ，而且这个once是全局统一的
     var once:String?  {
         get {
             //取了之后就删掉,
@@ -105,7 +105,7 @@ class V2Client: NSObject {
     }
     
     
-    /// 是否登陆
+    /// 是否登录
     var isLogin:Bool {
         get {
             if self.username?.Lenght > 0 {

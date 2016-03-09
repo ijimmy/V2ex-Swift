@@ -207,7 +207,7 @@ class TopicListModel:NSObject {
                         //领取奖励
                         if let aRootNode = jiHtml.xPath("//body/div[@id='Wrapper']/div[@class='content']/div[@class='box']/div[@class='inner']/a[@href='/mission/daily']")?.first {
                             if aRootNode.content == "领取今日的登录奖励" {
-                                print("有登陆奖励可领取")
+                                print("有登录奖励可领取")
                                 UserModel.dailyRedeem()
                             }
                         }

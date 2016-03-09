@@ -60,7 +60,7 @@ class AccountsManagerViewController: UIViewController,UITableViewDataSource,UITa
     }
 
     func warningClick(){
-        let alertView = UIAlertView(title: "临时隐私声明", message: "当你登陆时，软件会自动将你的账号与密码保存于系统的Keychain中（非常安全）。如果你不希望软件保存你的账号与密码，可以左滑账号并点击删除。\n后续会完善隐私声明页面，并添加 关闭保存账号密码机制 的选项。\n但我强烈推荐你不要关闭，因为这个会帮助你【登陆过期自动重连】、或者【切换多账号】", delegate: nil, cancelButtonTitle: "我知道了")
+        let alertView = UIAlertView(title: "临时隐私声明", message: "当你登录时，软件会自动将你的账号与密码保存于系统的Keychain中（非常安全）。如果你不希望软件保存你的账号与密码，可以左滑账号并点击删除。\n后续会完善隐私声明页面，并添加 关闭保存账号密码机制 的选项。\n但我强烈推荐你不要关闭，因为这个会帮助你【登录过期自动重连】、或者【切换多账号】", delegate: nil, cancelButtonTitle: "我知道了")
         alertView.show()
     }
     
@@ -146,13 +146,13 @@ class AccountsManagerViewController: UIViewController,UITableViewDataSource,UITa
             let user = self.users[alertView.tag - 100001]
             
             if let username = user.username,let password = user.password {
-                SVProgressHUD.showWithStatus("正在登陆")
+                SVProgressHUD.showWithStatus("正在登录")
                 UserModel.Login(username, password: password){
                     (response:V2ValueResponse<String>) -> Void in
                     if response.success {
-                        SVProgressHUD.showSuccessWithStatus("登陆成功")
+                        SVProgressHUD.showSuccessWithStatus("登录成功")
                         let username = response.value!
-                        NSLog("登陆成功 %@",username)
+                        NSLog("登录成功 %@",username)
                         //保存下用户名
                         V2EXSettings.sharedInstance[kUserName] = username
                         //获取用户信息

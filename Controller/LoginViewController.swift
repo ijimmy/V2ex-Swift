@@ -221,20 +221,20 @@ class LoginViewController: UIViewController {
             self.passwordTextField!.becomeFirstResponder()
             return;
         }
-        SVProgressHUD.showWithStatus("正在登陆")
+        SVProgressHUD.showWithStatus("正在登录")
         UserModel.Login(userName!, password: password!){
             (response:V2ValueResponse<String>) -> Void in
             if response.success {
-                SVProgressHUD.showSuccessWithStatus("登陆成功")
+                SVProgressHUD.showSuccessWithStatus("登录成功")
                 let username = response.value!
-                NSLog("登陆成功 %@",username)
+                NSLog("登录成功 %@",username)
                 //保存下用户名
                 V2EXSettings.sharedInstance[kUserName] = username
                 
                 //将用户名密码保存进keychain （安全保存)
                 V2UsersKeychain.sharedInstance.addUser(username, password: password!)
                 
-                //调用登陆成功回调
+                //调用登录成功回调
                 if let handel = self.successHandel {
                     handel(username)
                 }
