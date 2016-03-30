@@ -10,6 +10,8 @@ import UIKit
 import DrawerController
 import Alamofire
 import Ji
+import SVProgressHUD
+
 let kUserName = "me.fin.username"
 
 class V2Client: NSObject {
@@ -106,7 +108,14 @@ class V2Client: NSObject {
             }
         }
     }
-    
+
+    func ensureLoginWithHandler(handler:()->()) {
+        guard isLogin else {
+            SVProgressHUD.showInfoWithStatus("请先登录")
+            return;
+        }
+        handler()
+    }
     /**
      退出登录
      */
@@ -184,7 +193,7 @@ class V2Client: NSObject {
                 if let result = result {
                     let startIndex = notification.startIndex.advancedBy(result.range.location + 6)
                     let endIndex = notification.startIndex.advancedBy(result.range.location + result.range.length - 1)
-                    let subRange = Range<String.Index>(start: startIndex, end: endIndex)
+                    let subRange = Range<String.Index>(startIndex ..< endIndex)
                     let count = notification.substringWithRange(subRange)
                     if let acount = Int(count) {
                         self.notificationCount = acount
