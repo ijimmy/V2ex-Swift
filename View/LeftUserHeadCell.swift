@@ -55,7 +55,7 @@ class LeftUserHeadCell: UITableViewCell {
                     weakSelf.userNameLabel?.text = user.username
                     if let avatar = user.avatar_large {
                         weakSelf.avatarImageView?.kf_setImageWithURL(NSURL(string: "https:"+avatar)!, placeholderImage: nil, optionsInfo: nil, completionHandler: { (image, error, cacheType, imageURL) -> () in
-                            //如果请求到图片时，客户端已经不是登陆状态了，则将图片清除
+                            //如果请求到图片时，客户端已经不是登录状态了，则将图片清除
                             if !V2Client.sharedInstance.isLogin {
                                 weakSelf.avatarImageView?.image = nil
                             }
